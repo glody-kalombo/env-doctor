@@ -1,8 +1,5 @@
 """Vérifie les versions des dépendances du package et fais une comparaison entre les versions installées et les versions attendues."""
 
-# 1. `feature/python-and-venv-checks` : le squelette de `main()`, la version de Python, l'interpréteur et le venv ;
-
-# - La version de Python affichée doit être courte (`3.13.7`), pas toute la chaîne de compilation. Regarde `platform.python_version()`.
 import sys
 import platform
 
