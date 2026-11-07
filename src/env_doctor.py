@@ -1,4 +1,4 @@
-"""Vérifie les versions des dépendances du package et fais une comparaison entre les versions installées et les versions attendues."""
+"""Vérifie les versions des dépendances du package et fait une comparaison entre les versions installées et les versions attendues."""
 
 import sys
 import platform
@@ -10,21 +10,24 @@ def get_python_version():
     """Retourne la version de Python"""
     return platform.python_version()
 
+
 def get_interpreter_path():
-    """Retourne la chemin vers l'interpreteur"""
+    """Retourne le chemin vers l'interpréteur"""
     return sys.executable
+
 
 def is_venv_active():
     """Retourne True si l'environnement virtuel venv est actif"""
     return sys.prefix != sys.base_prefix
 
-def is_git_installed(get_version: bool = False) -> bool:
+
+def is_git_installed() -> bool:
     """Retourne True si Git est installé"""
-    if not get_version:
-        return shutil.which("git") is not None
+    return shutil.which("git") is not None
+
 
 def parse_requirements(requirements_path):
-    """Lis le fichier et retourne une liste de paires (nom, version_attendue) """
+    """Lit le fichier et retourne une liste de paires (nom, version_attendue) """
     req_file = Path(requirements_path)
     if not req_file.exists():
         raise FileNotFoundError(f"Le fichier '{requirements_path}' est introuvable. ")
@@ -42,38 +45,38 @@ def parse_requirements(requirements_path):
             else:
                 dependencies.append((line.strip(), None))
 
-        return dependencies
+    return dependencies
 
 def check_package(name, expected_version):
-        """Vérifie un seul paquet et retourne un statut et la version installée"""
-        try:
-            installed_version = importlib.metadata.version(name)
-            if expected_version is None or installed_version == expected_version:
-                return "OK", installed_version
-            else:
-                return "VERSION_DIFFERENTE", installed_version
-        except importlib.metadata.PackageNotFoundError:
-            return "MANQUANT", None
+    """Vérifie un seul paquet et retourne un statut et la version installée"""
+    try:
+        installed_version = importlib.metadata.version(name)
+        if expected_version is None or installed_version == expected_version:
+            return "OK", installed_version
+        else:
+            return "VERSION_DIFFERENTE", installed_version
+    except importlib.metadata.PackageNotFoundError:
+        return "MANQUANT", None
 
 def print_report():
+    """Imprime les resultats des fonctions du programme"""
 
     if len(sys.argv) < 2:
         print("Erreur : Veuillez spécifier le chemin du fichier de requirements en argument.")
-        print("Usage: python check_env.py <chemin_vers_requirements.txt>")
+        print("Usage: python src/env_doctor.py <chemin_vers_requirements.txt>")
         sys.exit(1)
 
     requirements_argument = sys.argv[1]
 
     # 1. Infos Système
-    """Imprime les resultats des foctions du programme"""
     python_version = get_python_version()
     interpreter_path = get_interpreter_path()
     is_venv_active_state = is_venv_active()
     is_git_installed_state = is_git_installed()
     print(f"La version de Python est : {python_version}")
-    print(f"Le chemin de l'interpreteur est : {interpreter_path}")
-    print(f"Venv est il actif : {is_venv_active_state}")
-    print(f"Git est il installé : {is_git_installed_state}")
+    print(f"Le chemin de l'interpréteur est : {interpreter_path}")
+    print(f"Venv est il actif : {'Oui' if is_venv_active_state else 'Non'}")
+    print(f"Git est il installé : {'Oui' if is_git_installed_state else 'Non'}")
 
     # 2. Lecture et analyse du fichier passé en argument
     try:
@@ -94,7 +97,7 @@ def print_report():
             print(f"    - {pkg_name}{version_str} : OK")
 
         elif status == "VERSION_DIFFERENTE":
-            print(f"    - {pkg_name} : VERSION DIFFERENTE (Demandée: {expected_version}, Installée: {installed_version})")
+            print(f"    - {pkg_name} : VERSION DIFFÉRENTE (Demandée: {expected_version}, Installée: {installed_version})")
             global_success = False
 
         elif status == "MANQUANT":
@@ -106,7 +109,7 @@ def print_report():
         print("\nDiagnostic complet : TOUT EST OK")
         sys.exit(0)
     else:
-        print("\nDiagnostic complet : ECHEC (Dépendances manquantes ou incorrectes)")
+        print("\nDiagnostic complet : ÉCHEC (Dépendances manquantes ou incorrectes)")
         sys.exit(1)
 
 def main():
