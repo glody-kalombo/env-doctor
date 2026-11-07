@@ -63,7 +63,7 @@ def print_report():
         sys.exit(1)
 
     requirements_argument = sys.argv[1]
-    
+
     # 1. Infos Système
     """Imprime les resultats des foctions du programme"""
     python_version = get_python_version()
@@ -77,7 +77,7 @@ def print_report():
 
     # 2. Lecture et analyse du fichier passé en argument
     try:
-        dependencies =  parse_requirements(requirements_argument)
+        dependencies = parse_requirements(requirements_argument)
     except FileNotFoundError as e:
         print(e)
         sys.exit(1)
