@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 import importlib.metadata
 
+
 def get_python_version():
     """Retourne la version de Python"""
     return platform.python_version()
@@ -47,6 +48,7 @@ def parse_requirements(requirements_path):
 
     return dependencies
 
+
 def check_package(name, expected_version):
     """Vérifie un seul paquet et retourne un statut et la version installée"""
     try:
@@ -58,8 +60,9 @@ def check_package(name, expected_version):
     except importlib.metadata.PackageNotFoundError:
         return "MANQUANT", None
 
+
 def print_report():
-    """Imprime les resultats des fonctions du programme"""
+    """Imprime les résultats des fonctions du programme"""
 
     if len(sys.argv) < 2:
         print("Erreur : Veuillez spécifier le chemin du fichier de requirements en argument.")
@@ -112,9 +115,11 @@ def print_report():
         print("\nDiagnostic complet : ÉCHEC (Dépendances manquantes ou incorrectes)")
         sys.exit(1)
 
+
 def main():
     """Gère le flux d'exécution principal du programme"""
     print_report()
+
 
 if __name__ == "__main__":
     main()
