@@ -1,0 +1,12 @@
+# Environnement virtuel Python
+.venv/
+
+# Fichiers de cache Python compilés
+__pycache__/
+*.pyc
+
+# Fichier de variables d'environnement
+.env
+
+# Checkpoints des notebooks Jupyter
+.ipynb_checkpoints/
