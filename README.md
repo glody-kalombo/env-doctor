@@ -12,12 +12,14 @@ Vous aurez besoins des outils suivants avant de lancer le programme
 L'installation du programme dans votre ordinateur (clone, venv, activation sous Windows et sous macOS/Linux).
 Ouvrez le terminal et tapez les commandes suivantes dans l'ordre:
 
+```bash
 git clone https://github.com/glody-kalombo/env-doctor.git
 cd env-doctor
 python -m venv .venv
-source .venv/Scripts/activate
-Windows (Git Bash) source : .venv/bin/activate
-MacOS / Linux pip install : -r requirements.txt
+source .venv/Scripts/activate # Windows (Git Bash)
+source .venv/bin/activate # MacOS / Linux
+pip install -r requirements.txt
+```
 
 ## Utilisation
 L'utilisation, avec un exemple de sortie réel dans le terminal
