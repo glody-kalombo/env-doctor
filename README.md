@@ -1,10 +1,10 @@
 # Env doctor
 
 ## Description
-Ce programme a pour but de faire un diagnostique complet de l'environnement de travail pour un data scientist, la présence et la version de Python, venv activé ou pas, Git installé ou pas, les bibliothèques présentes sont elles dans la bonne version ?
+Ce programme a pour but de faire un diagnostic complet de l'environnement de travail pour un data scientist, la présence et la version de Python, venv activé ou pas, Git installé ou pas, les bibliothèques présentes sont elles dans la bonne version ?
 
 ## Prérequis
-Vous aurez besoins des outils suivants avant de lancer le programme
+Vous aurez besoin des outils suivants avant de lancer le programme
 * Python 3.10 ou plus
 * Git
 
@@ -26,23 +26,23 @@ L'utilisation, avec un exemple de sortie réel dans le terminal
 
 python src/env_doctor.py requirements.txt
 
-```
+```bash
 $ python src/env_doctor.py requirements.txt
 La version de Python est : 3.13.7
-Le chemin de l'interpreteur est : C:\Users\Glody\projects\projects-by-step\env-doctor\.venv\Scripts\python.exe
-Venv est il actif : True
-Git est il installé : True
+Le chemin de l'interpréteur est : C:\Users\Glody\projects\projects-by-step\env-doctor\.venv\Scripts\python.exe
+Venv est il actif : Oui
+Git est il installé : Oui
 Vérification des dépendances (requirements.txt) :
-    - certifi==2026.10.19 : MANQUANT
-    - charset-normalizer==3.5.2 : MANQUANT
-    - idna==3.20 : MANQUANT
-    - requests==2.34.2 : MANQUANT
-    - urllib3==2.8.0 : MANQUANT
+    - certifi (2026.10.19) : OK
+    - charset-normalizer (3.5.2) : OK
+    - idna (3.20) : OK
+    - requests (2.34.2) : OK
+    - urllib3 (2.8.0) : OK
 
-Diagnostic complet : ECHEC (Dépendances manquantes ou incorrectes)
+Diagnostic complet : TOUT EST OK
 (.venv)
 ```
 
-## Licence.
+## Licence
 
 Ce projet est sous licence MIT, voir [LICENSE](LICENSE).
